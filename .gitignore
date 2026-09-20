@@ -21,3 +21,5 @@ data/cloud/**
 *.vcf.gz
 *.vcf.gz.tbi
 .DS_Store
+**/._*
+.DS_Store
