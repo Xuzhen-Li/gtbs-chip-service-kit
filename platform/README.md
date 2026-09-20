@@ -1,12 +1,12 @@
-# Platform (generic)
+# Platform (generic contracts)
 
-Modules (stubs this round; thin code next):
+Implementation currently lives in `src/grapeancestry/` (first complete GBTS companion). These folders state the **stable seams** other chips should target:
 
-| Dir | Intent |
-|-----|--------|
-| `pipeline/` | Config-driven run orchestration; VCF@panel-sites validation hooks |
-| `report/` | Sample-first HTML/JSON builders |
-| `viz/` | Table→plot helpers (PCA / ADMIXTURE / NJ shells) |
-| `cloud/` | Upload panel-sites VCF → `chip.json` skeleton (Python-only; no bwa required) |
+| Dir | Maps to package | Intent |
+|-----|-----------------|--------|
+| `pipeline/` | `cli.py`, `workflow/`, `core/` | Config-driven run; VCF@panel-sites |
+| `report/` | `report/` | Sample-first HTML/JSON |
+| `viz/` | `report/interactive_*`, `popgen/selection_viz.py` | PCA/ADMIXTURE/NJ/LocusZoom shells |
+| `cloud/` | `cloud/`, `app.py` | VCF → `chip.json` |
 
-No grapevine hardcoding here.
+See [docs/SCRIPTS.md](../docs/SCRIPTS.md) for file-level detail.
