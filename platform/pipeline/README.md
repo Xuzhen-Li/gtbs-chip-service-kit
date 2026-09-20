@@ -1,3 +1,3 @@
-# pipeline
+# platform/pipeline
 
-Generic pipeline hooks will land here. Keep this layer panel-agnostic.
+Documentation seam for the `pipeline` SPI. Implementations are private plugins; protocols: `gtbs_kit.spi`.

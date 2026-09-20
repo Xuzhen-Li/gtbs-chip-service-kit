@@ -1,12 +1,6 @@
-# Platform (generic contracts)
+# platform/ (contract docs)
 
-Implementation currently lives in `src/grapeancestry/` (first complete GBTS companion). These folders state the **stable seams** other chips should target:
+Folder layout mirrors SPI surfaces (`pipeline/`, `report/`, `viz/`, `cloud/`).
+Python protocols live in **`gtbs_kit.spi`** (avoids shadowing stdlib `platform`).
 
-| Dir | Maps to package | Intent |
-|-----|-----------------|--------|
-| `pipeline/` | `cli.py`, `workflow/`, `core/` | Config-driven run; VCF@panel-sites |
-| `report/` | `report/` | Sample-first HTML/JSON |
-| `viz/` | `report/interactive_*`, `popgen/selection_viz.py` | PCA/ADMIXTURE/NJ/LocusZoom shells |
-| `cloud/` | `cloud/`, `app.py` | VCF → `chip.json` |
-
-See [docs/SCRIPTS.md](../docs/SCRIPTS.md) for file-level detail.
+See [docs/REPO_LAYOUT.md](../docs/REPO_LAYOUT.md).

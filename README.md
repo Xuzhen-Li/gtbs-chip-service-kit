@@ -1,45 +1,35 @@
-# gtbs-chip-service-kit
+# GBTS Chip Service Kit
 
-A reusable companion stack for **GBTS / capture-panel** genotyping services: config-driven calling → sample-first reports → optional cloud card—so **any panel** can stand up its own analysis platform. The grapevine 167K layout in `config/` + `profiles/examples/grapevine-167k/` is an **example**, not the product boundary.
+**GBTS Chip Service Kit** is a reusable companion stack for standing up automated **GBTS** (genotyping-by-target-sequencing) and capture-panel analysis services for any crop. It packages calling pipelines, report engines, and cloud interfaces as one deployable template so labs can ship a genotyping dashboard without rebuilding the stack. The grapevine **167K** panel ships only as an example profile — raw reads through interactive diagnostic reports — not as the only supported species.
 
-**Repo slug:** `gtbs-chip-service-kit` (lab shorthand GTBS). Public English prose uses **GBTS** = Genotyping by Target Sequencing.
+Repo slug: [`gtbs-chip-service-kit`](https://github.com/Xuzhen-Li/gtbs-chip-service-kit).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![ORCID](https://img.shields.io/badge/ORCID-0000--0003--3670--6657-a6ce39)](https://orcid.org/0000-0003-3670-6657)
 
-## What you get
+## What stays public
 
 | Path | Role |
 |------|------|
-| `src/grapeancestry/` | Full Python package: pipeline domains, viz, sample-first V2 report, cloud card |
-| `workflow/Snakefile` | FASTQ → panel-site VCF |
-| `scripts/` | Panel ADMIXTURE archive / phenotype ETL helpers |
-| `config/` | Example demo YAML (grapevine paths—replace for your chip) |
-| `platform/` | Contracts for pipeline · report · viz · cloud (generic layer) |
-| `profiles/` | How to add a panel profile + grapevine-167k stub |
-| `docs/SCRIPTS.md` | **Detailed** script map (pipeline / viz / report) |
-| `bin/` | ADMIXTURE 1.3.0 + GCTA wrappers (optional on PATH) |
+| `platform/` | Contract docs (SPI in `gtbs_kit.spi`) |
+| `src/gtbs_kit/` | Load/validate profiles |
+| `profiles/` | Schema + [`examples/grapevine_167k`](profiles/examples/grapevine_167k/) |
+| `templates/` | Empty profile cookiecutter |
+| [`docs/REPO_LAYOUT.md`](docs/REPO_LAYOUT.md) | KEEP/CUT rules |
 
-**Not in this clone:** dosage matrices, FASTQ/BAM, reference genomes. Stage under `data/` (see `data/MANIFEST.md`).
+Binaries, genomes, FASTQ, and dosage matrices are **not** shipped.
 
-Grapevine **public walkthrough + Ages HTML:** [Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry).
+## Grapevine walkthrough (separate repo)
 
-## Quick install (lab machine with your data staged)
+Example profile points at **[Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)** (GUIDELINE, Ages demo HTML, step docs). That walkthrough is not duplicated here.
+
+## Quick start
 
 ```bash
-conda env create -f environment.yml   # or use existing env `ga`
-conda activate ga
-pip install -e ".[dev,web]"
-export PATH="$PWD/bin:$PATH"
-grapeancestry --help
+pip install -e .
+gtbs-kit validate-profile profiles/examples/grapevine_167k/profile.yaml
+gtbs-kit list-examples
 ```
-
-## Start here
-
-1. [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)  
-2. [docs/SCRIPTS.md](docs/SCRIPTS.md) — full script map  
-3. [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — platform vs profile  
-4. [profiles/README.md](profiles/README.md) — add your chip  
 
 ## License
 

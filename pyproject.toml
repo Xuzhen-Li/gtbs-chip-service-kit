@@ -1,39 +1,25 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "grapeancestry"
+name = "gtbs-chip-service-kit"
 version = "0.1.0"
-description = "Analysis suite for the grapevine 167K capture panel (GrapeAncestry Array)"
+description = "Reusable GBTS / capture-panel companion service kit (thin public glue)"
 readme = "README.md"
-license = { text = "MIT" }
 requires-python = ">=3.11"
-authors = [{ name = "GrapeAncestry Suite" }]
+license = { text = "MIT" }
+authors = [{ name = "Xuzhen Li" }]
 dependencies = [
-    "click>=8.1",
-    "pyyaml>=6.0",
-    "jinja2>=3.1",
-    "pandas>=2.0",
-    "numpy>=1.24",
-    "matplotlib>=3.8",
-    "scipy>=1.10",
-    "openpyxl>=3.1",
+  "click>=8.1",
+  "PyYAML>=6.0",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0"]
-web = ["streamlit>=1.30"]
+dev = ["pytest>=7.4"]
 
 [project.scripts]
-grapeancestry = "grapeancestry.cli:main"
+gtbs-kit = "gtbs_kit.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src"]
-markers = [
-    "slow: real 167k GWAS (minutes)",
-]

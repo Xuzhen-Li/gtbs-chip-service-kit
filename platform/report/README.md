@@ -1,3 +1,3 @@
-# report
+# platform/report
 
-Generic report hooks will land here. Keep this layer panel-agnostic.
+Documentation seam for the `report` SPI. Implementations are private plugins; protocols: `gtbs_kit.spi`.

@@ -1,0 +1,14 @@
+profile_id: grapevine_167k
+label: Grapevine 167K GBTS / liquid-capture panel (example only)
+panel_n_sites: 167433
+coordinate_system: VS-1
+# Local-only in private deploys (not in this public clone):
+# sites_bed: data/panel/panel167k.sites.bed
+# panel_info: data/panel/2449.info
+# dosage_cache: results/cache/panel_dosage_167k.npz
+# admixture_family: panel167k_nogwas
+handin:
+  cloud: chip.json
+  suite: "*.sample-first-v2.report.html"
+walkthrough_url: https://github.com/Xuzhen-Li/grapeancestry
+claims_doc: CLAIMS.md

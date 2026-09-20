@@ -1,10 +1,7 @@
 # Profiles
 
-A **profile** is everything that makes the platform speak *your* chip:
+1. Copy `../templates/` → `profiles/<chip_slug>/`.
+2. Fill `profile.yaml` against `profile.schema.json`.
+3. Keep large artifacts out of git.
 
-1. Copy [`../templates/`](../templates/) (or the grapevine example).  
-2. Point at your sites BED / panel metadata / frozen-axis files (local paths or download URLs you control).  
-3. Write claim boundaries ([`../docs/CLAIMS.md`](../docs/CLAIMS.md)).  
-4. Keep large matrices **out** of git.
-
-Example: [`examples/grapevine-167k/`](examples/grapevine-167k/).
+Example: [`examples/grapevine_167k/`](examples/grapevine_167k/).

@@ -1,3 +1,3 @@
-# cloud
+# platform/cloud
 
-Generic cloud hooks will land here. Keep this layer panel-agnostic.
+Documentation seam for the `cloud` SPI. Implementations are private plugins; protocols: `gtbs_kit.spi`.

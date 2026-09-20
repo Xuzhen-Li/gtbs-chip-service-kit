@@ -1,3 +1,3 @@
-# viz
+# platform/viz
 
-Generic viz hooks will land here. Keep this layer panel-agnostic.
+Documentation seam for the `viz` SPI. Implementations are private plugins; protocols: `gtbs_kit.spi`.
