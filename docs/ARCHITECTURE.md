@@ -19,4 +19,4 @@ None of the large binaries belong in this public clone.
 ## Sibling repo
 
 - **grapeancestry** = grapevine 167K *public face* (GUIDELINE, Ages HTML).  
-- **chip-companion** = *how to stand up* a companion service for any GBTS panel.
+- **gtbs-chip-service-kit** = *how to stand up* a companion service for any GBTS panel.

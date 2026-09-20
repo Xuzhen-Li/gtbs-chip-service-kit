@@ -1,6 +1,8 @@
-# chip-companion
+# gtbs-chip-service-kit
 
 A reusable companion stack for **GBTS / capture-panel** genotyping services: config-driven calling → sample-first reports → optional cloud card—so any panel can stand up its own analysis platform. The grapevine 167K profile is an **example**, not the product boundary.
+**Repo name:** `gtbs-chip-service-kit` (Jason). Public English copy still says **GBTS** = Genotyping by Target Sequencing; “GTBS” in the slug matches the lab shorthand.
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![ORCID](https://img.shields.io/badge/ORCID-0000--0003--3670--6657-a6ce39)](https://orcid.org/0000-0003-3670-6657)
@@ -24,7 +26,7 @@ This repo’s `profiles/examples/grapevine-167k/` is only an **example profile s
 ## Layout
 
 ```text
-chip-companion/
+gtbs-chip-service-kit/
   docs/                 # getting started, architecture, claims
   platform/             # pipeline · report · viz · cloud (generic)
   profiles/examples/grapevine-167k/
