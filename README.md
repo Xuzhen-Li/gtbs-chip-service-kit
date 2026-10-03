@@ -1,5 +1,9 @@
 # GBTS Chip Service Kit
 
+How to build your own analysis suite from chip data you already have. This repo is the suite: profiles, reports, and the service scaffold. It does not tell you how to design the chip.
+
+Designing a chip is [grapevine-chip](https://github.com/Xuzhen-Li/grapevine-chip). The grapevine 167K run of this suite is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry).
+
 **GBTS Chip Service Kit** is a reusable companion stack for standing up automated **GBTS** (genotyping-by-target-sequencing) and capture-panel analysis services for any crop. It packages calling pipelines, report engines, and cloud interfaces as one deployable template so labs can ship a genotyping dashboard without rebuilding the stack. The grapevine **167K** panel ships only as an example profile — raw reads through interactive diagnostic reports — not as the only supported species.
 
 Repo slug: [`gtbs-chip-service-kit`](https://github.com/Xuzhen-Li/gtbs-chip-service-kit).
