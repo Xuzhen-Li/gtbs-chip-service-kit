@@ -1,37 +1,24 @@
 # Step 12b — GWAS LocusZoom (trait leads)
 
-## Goal
+## Input
 
-LocusZoom for panel GWAS leads (e.g. OIV 225 region) with query GT overlay.
+- `results/gwas/**/locuszoom.json`, or the equivalent per-trait payload.
+- Query VCF for the genotype strip.
+- LocusZoom for panel GWAS leads (for example the OIV 225 region) with query genotype overlay.
 
-## Inputs
-
-- `results/gwas/**/locuszoom.json` (or equivalent per-trait payload)
-- Query VCF for genotype strip
-
-## Commands
+## Do
 
 ```bash
 grapeancestry gwas --pheno data/phenotype.tsv --curated
 grapeancestry analyze --sample Ages
-
-# Interactive:
-#   src/grapeancestry/report/interactive_dashboard.py
-#   GWAS locuszoom payloads under results/gwas/
+src/grapeancestry/report/interactive_dashboard.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| Lead SNP GT for this sample | Overlay strip |
-| Site table with p/β | Panel association context |
-
-## Plots
-
-GWAS LocusZoom + genotype overlay bars/table.
-
-## Notes
-
-- Strip colour = **genotype**, not LD.
-- Panel association ≠ observed customer phenotype; GS score ≠ phenotype.
+- Lead SNP genotype for this sample: overlay strip.
+- Site table with p and beta: panel association context.
+- GWAS LocusZoom plus genotype overlay bars and table.
+- GWAS LocusZoom payloads live under `results/gwas/`.
+- Strip colour is genotype, not LD.
+- Panel association is not an observed customer phenotype. A GS score is not a phenotype.

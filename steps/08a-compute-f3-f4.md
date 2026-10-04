@@ -1,41 +1,27 @@
 # Step 08a — Compute f3/f4 contrasts
 
-## Goal
+## Input
 
-Complete-case f3/f4 of the query vs Grp reference means (exploratory).
+- Query genotype or dosage at panel sites.
+- Grp means from panel metadata (`2449.info`).
+- Panel dosage cache.
+- Complete-case f3 and f4 of the query versus Grp reference means. Exploratory.
 
-## Inputs
-
-- Query genotype / dosage at panel sites
-- Grp means from panel metadata (`2449.info`)
-- Panel dosage cache
-
-## Commands
-
-**No dedicated `grapeancestry` f3/f4 CLI.** Statistics run on the report path:
+## Do
 
 ```bash
 grapeancestry analyze --sample Ages
 grapeancestry run --sample Ages
-
-# Libraries only:
-#   src/grapeancestry/adna/fstats.py
-#   src/grapeancestry/popgen/fstats_report.py
+src/grapeancestry/adna/fstats.py
+src/grapeancestry/popgen/fstats_report.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| Per-contrast f, Z | Exploratory f3/f4 |
-| `n_sites`, `n_blocks` | Complete-case + jackknife block counts |
-
-## Plots
-
-Tables/cards in 08b.
-
-## Notes
-
-- Missing dedicated CLI — do not invent `grapeancestry fstats`.
-- Not formal qp3Pop / qpDstat / qpAdm / qpGraph.
-- Each contrast is complete-case; missing query sites excluded.
+- Per-contrast f and Z: exploratory f3 and f4.
+- `n_sites` and `n_blocks`: complete-case and jackknife block counts.
+- Tables and cards are in 08b.
+- No dedicated `grapeancestry` f3 or f4 CLI. The statistics run on the report path.
+- Do not invent `grapeancestry fstats`.
+- Not formal qp3Pop, qpDstat, qpAdm, or qpGraph.
+- Each contrast is complete-case. Missing query sites are excluded.

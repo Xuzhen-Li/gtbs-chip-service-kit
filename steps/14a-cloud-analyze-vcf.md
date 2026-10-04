@@ -1,18 +1,20 @@
 # Step 14a — Cloud analyze query VCF (optional)
 
-## Goal
+## Input
 
-**Optional** (not required for v1 Docker / DIY HTML). Analyze a **167K-site query VCF** in the Cloud Chip Companion path.
+- Optional. Not required for v1 Docker or DIY HTML.
+- A 167K-site query VCF on the Cloud Chip Companion path.
 
+## Do
 
-## Scripts
+```bash
+grapeancestry chip-report
+src/grapeancestry/cloud/analyze.py
+vcf_py.py
+sites.py
+```
 
-`grapeancestry chip-report` · `src/grapeancestry/cloud/analyze.py`, `vcf_py.py`, `sites.py`
+## Get
 
-## Statistical / file outputs
-
-Intermediate card stats (IBS, SDR proxy, MAS, GS) before JSON dump
-
-## Visualization outputs
-
-Streamlit progressive sections (`app.py`).
+- Intermediate card stats before the JSON dump: IBS, SDR proxy, MAS, and GS.
+- Streamlit progressive sections (`app.py`).

@@ -1,40 +1,26 @@
 # Step 11a — Train GS models
 
-## Goal
+## Input
 
-Train panel genomic-selection models and record CV metrics / provenance.
+- `data/phenotype.tsv` (Step 00f).
+- Panel dosage cache.
+- Trait filters named in the notes: `--curated`, `--trait`, …
+- Train panel genomic-selection models and record cross-validation metrics and provenance.
 
-## Inputs
-
-- `data/phenotype.tsv` (Step 00f)
-- Panel dosage cache
-- Trait filters (`--curated`, `--trait`, …)
-
-## Commands
+## Do
 
 ```bash
-grapeancestry gs-train \
-  --pheno data/phenotype.tsv \
-  --cache results/cache/panel_dosage_167k.npz \
-  --curated \
-  --min-n 50 --k-folds 3
-
-# Libraries: src/grapeancestry/breeding/gs.py · gs_models.py · provenance.py
-# CLI: src/grapeancestry/cli.py → gs-train
+grapeancestry gs-train --pheno data/phenotype.tsv --cache results/cache/panel_dosage_167k.npz --curated --min-n 50 --k-folds 3
+src/grapeancestry/breeding/gs.py
+gs_models.py
+provenance.py
+src/grapeancestry/cli.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| `results/gs/index.tsv` | CV r, best model name per trait |
-| Training provenance JSON | Reproducibility metadata |
-
-## Plots
-
-None required (tables / index).
-
-## Notes
-
-- Grapevine decision-grade example: **OIV 225** colour (`cv_r≈0.62`, `best_model=topk_ridge` in local index).
-- OIV 241 and other traits may be exploratory only — declare in `CLAIMS.md`.
+- `results/gs/index.tsv`: cross-validation r and the best model name per trait.
+- Training provenance JSON: reproducibility metadata.
+- No plot is required. Tables and the index are the record.
+- Grapevine decision-grade example: OIV 225 colour (`cv_r≈0.62`, `best_model=topk_ridge` in the local index).
+- OIV 241 and other traits may be exploratory only. Declare that in `CLAIMS.md`.

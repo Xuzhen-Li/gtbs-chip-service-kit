@@ -1,40 +1,27 @@
 # Step 00f — Phenotype and trait tables
 
-## Goal
+## Input
 
-Stage phenotypes and trait dictionaries for panel GWAS/GS (skip for ancestry-only doors).
+- Long-table phenotypes joined to panel IDs.
+- Trait scale rules (ordinal or binary). OIV and trait locus tables as available.
+- Stage phenotypes and trait dictionaries for panel GWAS and GS. Skip this step for ancestry-only doors.
 
-## Inputs
-
-- Long-table phenotypes joined to panel IDs
-- Trait scale rules (ordinal/binary); OIV / trait locus tables as available
-
-## Commands
+## Do
 
 ```bash
-# ETL helpers (no grapeancestry phenotype subcommand):
 python scripts/build_phenotype.py --help
-# Library: src/grapeancestry/breeding/phenotype.py
-# OIV helpers: src/grapeancestry/resource/oiv.py
-
-# Downstream suite CLIs that consume data/phenotype.tsv:
+src/grapeancestry/breeding/phenotype.py
+src/grapeancestry/resource/oiv.py
 grapeancestry gwas --pheno data/phenotype.tsv --curated
 grapeancestry gs-train --pheno data/phenotype.tsv --curated
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| `data/phenotype.tsv` | Training input; suite rule of thumb ≥50 overlapping panel IDs per trait |
-| Trait dictionary / template TSVs | Binary rules, labels (`data/phenotype_template.tsv`) |
-
-## Plots
-
-None at prep; used later in Steps 10–11 cards.
-
-## Notes
-
-- Declare which traits are **decision-grade** in profile `CLAIMS.md` before treating scores as rankable.
-- Grapevine example: only **OIV 225** colour GS is decision-grade; other traits may be exploratory.
+- `data/phenotype.tsv`: training input. Suite rule of thumb is at least 50 overlapping panel IDs per trait.
+- Trait dictionary and template TSVs: binary rules and labels (`data/phenotype_template.tsv`).
+- No plot at prep. The tables are used later in Steps 10–11 cards.
+- There is no `grapeancestry` phenotype subcommand. The ETL helper is `scripts/build_phenotype.py`.
+- Declare which traits are decision-grade in profile `CLAIMS.md` before treating scores as rankable.
+- Grapevine example: only OIV 225 colour GS is decision-grade. Other traits may be exploratory.
 - Uti (WINE/TABLE) is not used as a breeding trait.

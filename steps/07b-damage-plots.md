@@ -1,36 +1,24 @@
 # Step 07b — Damage and fragment-length plots
 
-## Goal
+## Input
 
-Display terminal C→T / G→A curves and insert-size / fragment-length histogram.
+- Damage TSV and mapDamage outputs from 07a.
+- Report builder context for the sample.
+- Display terminal C→T and G→A curves, and the insert-size or fragment-length histogram.
 
-## Inputs
-
-- Damage TSV / mapDamage outputs from 07a
-- Report builder context for the sample
-
-## Commands
+## Do
 
 ```bash
-# Embedded by analyze / run report builders (no separate plot CLI):
 grapeancestry analyze --sample Ages --source-sample Ages
-
-# Plot helpers:
-#   src/grapeancestry/adna/damage_lite.py
-#   src/grapeancestry/report/build_report.py · interactive_dashboard.py
+src/grapeancestry/adna/damage_lite.py
+src/grapeancestry/report/build_report.py
+interactive_dashboard.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| Pos1 misincorporation rates | Figure caption / metadata |
-| Damage panel payload | Curves + histogram for HTML |
-
-## Plots
-
-Sample validity → Damage panel (two curves + histogram).
-
-## Notes
-
-- aDNA-specific visualization; PE modern runs leave this door unavailable rather than fabricating curves.
+- Position-1 misincorporation rates: figure caption and metadata.
+- Damage panel payload: curves and histogram for the HTML.
+- Sample validity damage panel: two curves and a histogram.
+- Embedded by `analyze` and `run` report builders. There is no separate plot CLI.
+- aDNA-specific visualization. Modern paired-end runs leave this door unavailable rather than fabricating curves.

@@ -1,43 +1,28 @@
 # Step 00a — Panel sites and sample metadata
 
-## Goal
+## Input
 
-Define the chip: which sites belong to the panel, and which reference sample IDs / groups exist.
+- Target site list as a BED, one row per chip site.
+- Panel sample list and metadata table (ID, origin, Grp, use, and the other columns the table already has).
+- Optional probe or loci BED for on-target QC.
+- Cross-crop profile contract: [gtbs-chip-service-kit](https://github.com/Xuzhen-Li/gtbs-chip-service-kit). Grapevine paths via `config/`.
+- Grapevine demo paths: `config/*.yaml`.
+- Define the chip: which sites belong to the panel, and which reference sample IDs and groups exist.
+- First fork point for other chips: your BED and metadata replace the grapevine 167K example.
+- Keep panel IDs distinct from independent recapture stems (for example panel `HUN89` is not report `HUN89_query`).
+- No dedicated `grapeancestry` CLI. Prepare files and declare them in config.
 
-## Inputs
-
-- Target site list → BED (one row per chip site)
-- Panel sample list + metadata table (ID, origin, Grp, use, …)
-- Optional: probe/loci BED for on-target QC
-- Cross-crop profile contract: [gtbs-chip-service-kit](https://github.com/Xuzhen-Li/gtbs-chip-service-kit); grapevine paths via `config/`
-
-## Commands
-
-No dedicated `grapeancestry` CLI. Prepare files and declare them in config (cross-crop profiles → kit repo):
+## Do
 
 ```bash
-# Cross-crop profile scaffold: https://github.com/Xuzhen-Li/gtbs-chip-service-kit
-# Grapevine demo paths: config/*.yaml
-
-# Helpers (library / export — not a suite CLI):
-#   src/grapeancestry/resource/panel_export.py
+src/grapeancestry/resource/panel_export.py
 ```
 
-Document inventory in `data/MANIFEST.md` (paths are local; matrices stay out of git).
+## Get
 
-## Outputs
-
-| Artifact | Meaning |
-|----------|---------|
-| `data/panel/*.sites.bed` (local) | Calling and QC intervals |
-| `data/panel/*.info` / sample annot | Grp colours, passport fields |
-| Profile `panel_n_sites` | Declared site count for method coverage |
-
-## Plots
-
-None required. Document site count and ID rules in the profile README / `CLAIMS.md`.
-
-## Notes
-
-- First fork point for other chips: your BED + metadata replace the grapevine 167K example.
-- Keep panel IDs distinct from independent recapture stems (e.g. panel `HUN89` ≠ report `HUN89_query`).
+- `data/panel/*.sites.bed` (local): calling and QC intervals.
+- `data/panel/*.info` or the sample annotation: Grp colours and passport fields.
+- Profile `panel_n_sites`: declared site count for method coverage.
+- No plot is required. Document site count and ID rules in the profile README or `CLAIMS.md`.
+- Document the inventory in `data/MANIFEST.md`. Paths are local. Matrices stay out of git.
+- The helper is a library or export, not a suite CLI.

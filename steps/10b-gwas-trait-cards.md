@@ -1,42 +1,28 @@
 # Step 10b — GWAS trait cards
 
-## Goal
+## Input
 
-Present per-trait GWAS results and imbalance warnings on the report / Cloud cards.
+- GWAS summaries from 10a.
+- Query VCF only for genotype overlay fields.
+- Present per-trait GWAS results and imbalance warnings on the report and Cloud cards.
 
-## Inputs
-
-- GWAS summaries from 10a
-- Query VCF only for GT overlay fields
-
-## Commands
+## Do
 
 ```bash
-# Cards assembled on report / Cloud paths:
 grapeancestry analyze --sample Ages
 grapeancestry chip-report --vcf results/Ages.vcf.gz --out chip.json
-
-# Libraries:
-#   src/grapeancestry/breeding/methods_doc.py
-#   src/grapeancestry/cloud/mas.py · card.py
-#   src/grapeancestry/report/build_report.py
+src/grapeancestry/breeding/methods_doc.py
+src/grapeancestry/cloud/mas.py
+card.py
+src/grapeancestry/report/build_report.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| Card fields | Top site, N, coverage, Bayes/p summaries as available |
-| Imbalance warnings | Binary case/control n when relevant |
-
-## Plots
-
-Sample evidence / MAS cards in HTML or Cloud UI.
-
-## Notes
-
-DIY / v1 product stops at **13b** (`*.sample-first-v2.report.html`). `chip-report` → `chip.json` is **Steps 14\*** only.
-
-
-- **Panel GWAS ≠ customer measured phenotype.**
-- Score ≠ phenotype (see also GS Step 11b).
+- Card fields: top site, N, coverage, and Bayes or p summaries as available.
+- Imbalance warnings: binary case and control n when relevant.
+- Sample evidence and MAS cards in the HTML or the Cloud UI.
+- Cards are assembled on the report and Cloud paths.
+- DIY and the v1 product stop at 13b (`*.sample-first-v2.report.html`). `chip-report` to `chip.json` is Steps 14 only.
+- Panel GWAS is not a customer measured phenotype.
+- A score is not a phenotype (see also GS Step 11b).

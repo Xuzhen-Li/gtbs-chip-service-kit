@@ -1,38 +1,25 @@
 # Step 02b — Calling rates and method coverage
 
-## Goal
+## Input
 
-Separate panel vs VCF calling rates and declare which downstream methods are available vs unavailable.
+- QC and VCF products from Steps 01b–02a.
+- Profile site count (`panel_n_sites`) and whether frozen assets are present (PCA, ADMIXTURE, phenotypes).
+- Separate panel versus VCF calling rates, and declare which downstream methods are available or unavailable.
 
-## Inputs
-
-- QC / VCF products from Steps 01b–02a
-- Profile site count (`panel_n_sites`) and presence of frozen assets (PCA, ADMIXTURE, phenotypes)
-
-## Commands
+## Do
 
 ```bash
-# Calling-rate fields come from grapeancestry qc / analyze:
 grapeancestry qc --bam results/bam/Ages.markdup.bam --vcf results/Ages.vcf.gz --sample Ages
 grapeancestry analyze --sample Ages
-
-# Method-coverage rows assembled in report builder:
-#   src/grapeancestry/core/qc.py
-#   src/grapeancestry/report/build_report.py
+src/grapeancestry/core/qc.py
+src/grapeancestry/report/build_report.py
 ```
 
-## Outputs
+## Get
 
-| Metric | Meaning |
-|--------|---------|
-| Panel calling rate | called ÷ all chip sites |
-| VCF-site calling rate | called ÷ sites present in this VCF |
-| Method coverage rows | PCA / selection / GWAS / damage / GS → available vs unavailable |
-
-## Plots
-
-Method-coverage table in Sample validity; conclusions bullets in the HTML.
-
-## Notes
-
-- Unavailable methods must be labeled unavailable — do not invent placeholder statistics.
+- Panel calling rate: called divided by all chip sites.
+- VCF-site calling rate: called divided by sites present in this VCF.
+- Method coverage rows: PCA, selection, GWAS, damage, and GS, each available or unavailable.
+- Method-coverage table in Sample validity, and conclusion bullets in the HTML.
+- Calling-rate fields come from `grapeancestry qc` and `analyze`. Method-coverage rows are assembled in the report builder.
+- Unavailable methods must be labeled unavailable. Do not invent placeholder statistics.

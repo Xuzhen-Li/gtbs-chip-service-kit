@@ -1,4 +1,4 @@
-> Scripts, data, config, and the sibling docs linked below (`REPO_MAP.md`, `docs/SCRIPTS.md`, `docs/PIPELINE.md`, `docs/GUIDELINE.md`) are not in this repo; stage them locally. The grapevine 167K worked example is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry).
+> Scripts, data, config, and the sibling docs linked below (`REPO_MAP.md`, `docs/SCRIPTS.md`, `docs/PIPELINE.md`, `docs/GUIDELINE.md`) are not in this repo; stage them locally. The grapevine 167K worked example is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry). A public demo of that report is [ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html).
 
 # Analysis steps (fine-grained)
 
@@ -9,7 +9,7 @@ Needs the VS-1 genome and 2449 × 167K panel assets you stage yourself (not in g
 
 One markdown per sub-step. Names use **`00a`…`14b`** so order stays obvious.
 
-**Legend:** `00*` = data preparation (before any customer sample) · `01*`+ = per-sample analysis · each page lists **Goal / Inputs / Commands / Outputs / Plots / Notes**.
+**Each file is Input, Do, and Get.** `00*` = data preparation (before any customer sample) · `01*`+ = per-sample analysis.
 
 | Step | Doc | Focus |
 |------|-----|-------|

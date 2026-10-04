@@ -1,38 +1,23 @@
 # Step 06a — Build IBS distance for tree
 
-## Goal
+## Input
 
-Compute identity distances between query and panel tips used in the NJ tree.
+- Query dosage from the VCF, plus the panel dosage cache.
+- Tip subsample and keep rules inside the tree builder.
+- Compute identity distances between the query and the panel tips used in the NJ tree.
 
-## Inputs
-
-- Query dosage (from VCF) + panel dosage cache
-- Tip subsample / keep rules inside the tree builder
-
-## Commands
-
-**No dedicated `grapeancestry` NJ/distance CLI.** Distance prep runs on the report path:
+## Do
 
 ```bash
-# Triggered by:
 grapeancestry analyze --sample Ages
 grapeancestry run --sample Ages
-
-# Libraries only:
-#   src/grapeancestry/popgen/tree_nj.py
-#     ibs_distance_to_rows · ibs_distance_matrix · load_or_compute_panel_ibs_d · assemble_tree_distance
+src/grapeancestry/popgen/tree_nj.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| Distance matrix / condensed vector | In memory or cache for layout (06b) |
-
-## Plots
-
-None yet (layout in 06b).
-
-## Notes
-
-- Honest gap: there is no `grapeancestry nj` / `tree` subcommand — use `analyze` / `run` or call `tree_nj` from Python.
+- Distance matrix or condensed vector, in memory or cache, for the layout in 06b.
+- No plot yet. Layout is 06b.
+- No dedicated `grapeancestry` NJ or distance CLI. Distance prep runs on the report path.
+- Library functions named in the notes: `ibs_distance_to_rows`, `ibs_distance_matrix`, `load_or_compute_panel_ibs_d`, and `assemble_tree_distance`.
+- There is no `grapeancestry nj` or `tree` subcommand. Use `analyze` or `run`, or call `tree_nj` from Python.

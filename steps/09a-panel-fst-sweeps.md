@@ -1,42 +1,32 @@
 # Step 09a — Panel Fst / sweep scan
 
-## Goal
+## Input
 
-Grp-vs-rest Fst and heterozygosity extremes on the **2449 panel only** (unphased).
+- Panel dosage and Grp labels.
+- Optional half-window bp and top-N for named windows.
+- Grp-versus-rest Fst and heterozygosity extremes on the 2449 panel only (unphased).
 
-## Inputs
-
-- Panel dosage + Grp labels
-- Optional half-window bp / top-N for named windows
-
-## Commands
+## Do
 
 ```bash
 grapeancestry selection --half-bp 50000 --top 40
-
-# Libraries:
-#   src/grapeancestry/cli.py → selection
-#   src/grapeancestry/popgen/selscan.py
-#   src/grapeancestry/adna/selection.py · popgen/stats.py · popgen/selection_report.py
-
-# Also wired into grapeancestry analyze / run when selection assets exist
+src/grapeancestry/cli.py
+src/grapeancestry/popgen/selscan.py
+src/grapeancestry/adna/selection.py
+popgen/stats.py
+popgen/selection_report.py
+grapeancestry analyze
+grapeancestry run
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| `results/selection/named_windows.tsv` | Named window het/Fst |
-| `results/selection/by_grp_named.tsv` | Per-Grp summaries |
-| Sweep rows | Fst ≥ within-Grp 95th **and** windowed het ≤ 5th |
-| `results/selection/locuszoom.json` | When present (feeds 12a) |
-
-## Plots
-
-Built in 09b (Manhattan / heat).
-
-## Notes
-
-- Selection is **panel-only**; query GT is an overlay later — not evidence the sample “was selected.”
+- `results/selection/named_windows.tsv`: named-window heterozygosity and Fst.
+- `results/selection/by_grp_named.tsv`: per-Grp summaries.
+- Sweep rows: Fst at or above the within-Grp 95th percentile, and windowed heterozygosity at or below the 5th percentile.
+- `results/selection/locuszoom.json` when present. It feeds 12a.
+- Manhattan and heat plots are built in 09b.
+- Also wired into `grapeancestry analyze` and `run` when selection assets exist.
+- Selection is panel-only. Query genotype is an overlay later, not evidence the sample was selected.
 - `fst_sites()` is a simplified Fst contrast, not canonical Weir–Cockerham unless benchmarked.
-- `GEO` is reserved for GEA/origin — not this selection door.
+- `GEO` is reserved for GEA and origin, not this selection door.

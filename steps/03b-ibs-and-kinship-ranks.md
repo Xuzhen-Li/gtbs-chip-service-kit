@@ -1,38 +1,25 @@
 # Step 03b — IBS and kinship ranks
 
-## Goal
+## Input
 
-Rank reference samples by IBS and KING-related metrics for the query.
+- The same identity inputs as 03a: query VCF and dosage cache.
+- Rank reference samples by IBS and KING-related metrics for the query.
 
-## Inputs
-
-- Same identity inputs as 03a (query VCF + dosage cache)
-
-## Commands
+## Do
 
 ```bash
-grapeancestry identity \
-  --vcf results/Ages.vcf.gz \
-  --sample Ages \
-  --cache results/cache/panel_dosage_167k.npz \
-  --out-tsv results/Ages.ibs.tsv
-
-# Also produced by grapeancestry analyze / run
-# Libraries: src/grapeancestry/identity/ibs.py · run_ibs.py
+grapeancestry identity --vcf results/Ages.vcf.gz --sample Ages --cache results/cache/panel_dosage_167k.npz --out-tsv results/Ages.ibs.tsv
+grapeancestry analyze
+grapeancestry run
+src/grapeancestry/identity/ibs.py
+run_ibs.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| `results/{sample}.ibs.tsv` | Top IBS neighbours |
-| `results/{sample}.kinship_top.tsv` | Top kinship ranks (when written) |
-| Summary TSVs | Counts / nearest non-self |
-
-## Plots
-
-Side-by-side IBS top / Kinship top tables in the report.
-
-## Notes
-
-- Italy 4K-style IBS vs panel cache; prefer 167k dosage when available.
+- `results/{sample}.ibs.tsv`: top IBS neighbours.
+- `results/{sample}.kinship_top.tsv`: top kinship ranks, when written.
+- Summary TSVs: counts and nearest non-self.
+- Side-by-side IBS top and kinship top tables in the report.
+- The same tables are also produced by `grapeancestry analyze` and `run`.
+- Italy 4K-style IBS versus the panel cache. Prefer the 167k dosage when it is available.

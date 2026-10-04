@@ -1,6 +1,6 @@
 # How to use this kit
 
-Two layers.
+Two layers. Each linked file is Input, Do, and Get.
 
 What this package runs is the six steps below: install, read the grapevine 167K example profile, copy `templates/`, fill `profile.yaml`, `validate-profile`, and point the BED, the sample table, and the dosage file at local paths. Do not commit genomes, FASTQ, VCF, or dosage.
 

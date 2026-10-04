@@ -1,51 +1,33 @@
 # Step 01a — Trim and map
 
-## Goal
+## Input
 
-Clean reads and align them to the profile reference (modern PE or aDNA SE).
+- FASTQ paths from the sample YAML (`config/samples_*.yaml`, field `type`: `pe`, `se`, or `adna`).
+- Reference fasta from Step 00b.
+- Config: `config/mbp_demo.yaml` or `hpc_full.yaml`.
+- Clean reads and align them to the profile reference (modern paired-end or aDNA single-end).
+- Snakefile rules: `trim_pe`, `trim_se`, or `trim_adna`, then `map_pe`, `map_se`, or `map_aln`, then `lift_or_copy`.
 
-## Inputs
-
-- FASTQ paths from sample YAML (`config/samples_*.yaml`, field `type`: `pe` / `se` / `adna`)
-- Reference fasta from Step 00b
-- Config: `config/mbp_demo.yaml` (or `hpc_full.yaml`)
-
-## Commands
+## Do
 
 ```bash
-# Preferred orchestration (runs Snakemake then optional analyze):
-grapeancestry run --config config/mbp_demo.yaml \
-  --samples config/samples_ages.yaml --sample Ages -j 4 --mapping full
-
-# Or invoke Snakefile rules directly:
-snakemake -s workflow/Snakefile --configfile config/mbp_demo.yaml \
-  --config samples_file=config/samples_ages.yaml -j 4 \
-  results/bam/Ages.raw.bam
-
-# Rules: trim_pe | trim_se | trim_adna → map_pe | map_se | map_aln → lift_or_copy
-# Gate helper: src/grapeancestry/core/gate.py
+grapeancestry run --config config/mbp_demo.yaml --samples config/samples_ages.yaml --sample Ages -j 4 --mapping full
+snakemake -s workflow/Snakefile --configfile config/mbp_demo.yaml --config samples_file=config/samples_ages.yaml -j 4 results/bam/Ages.raw.bam
+fastp
+bwa mem
+AdapterRemoval3
+bwa aln -l 1024 -n 0.01
+samse
+python -m grapeancestry.core.lift
+src/grapeancestry/core/gate.py
 ```
 
-### Modern PE
+## Get
 
-`fastp` (`trim_pe`) → `bwa mem` (`map_pe`) → optional `lift_or_copy`
-
-### aDNA SE
-
-AdapterRemoval3 (`trim_adna`, min length 25) → `bwa aln` + `samse` (`map_aln`, `-l 1024 -n 0.01`) → `lift_or_copy`
-
-## Outputs
-
-| Artifact | Meaning |
-|----------|---------|
-| `results/trim/*` | Trimmed FASTQ + fastp / AdapterRemoval reports |
-| `results/bam/{sample}.raw.bam` / `.lifted.bam` | Mapping product (pre-markdup) |
-
-## Plots
-
-None required (trim HTML/JSON logs only).
-
-## Notes
-
-- `mapping: full` after gate concordance (pipeline docs cite 0.959) uses the full reference; `subref` lifts via `python -m grapeancestry.core.lift`.
-- aDNA door also feeds Steps 07a/07b (damage).
+- `results/trim/*`: trimmed FASTQ plus fastp and AdapterRemoval reports.
+- `results/bam/{sample}.raw.bam` or `.lifted.bam`: mapping product, before markdup.
+- No plot is required. Trim HTML and JSON logs only.
+- Modern paired-end: `fastp` (`trim_pe`), then `bwa mem` (`map_pe`), then optional `lift_or_copy`.
+- aDNA single-end: AdapterRemoval3 (`trim_adna`, minimum length 25), then `bwa aln` and `samse` (`map_aln`, `-l 1024 -n 0.01`), then `lift_or_copy`.
+- `mapping: full` after gate concordance (pipeline docs cite 0.959) uses the full reference. `subref` lifts via `python -m grapeancestry.core.lift`.
+- The aDNA door also feeds Steps 07a and 07b (damage).

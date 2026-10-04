@@ -1,40 +1,26 @@
 # Step 04a — Load frozen PCA axes
 
-## Goal
+## Input
 
-Resolve the frozen GCTA / `pca_lock` axis cache built in Step 00d (no refit).
+- Lab GCTA freeze artifacts under `results/cache/` (eigenvec and eigenval).
+- Panel dosage cache for site alignment.
+- Root layout expected by `pca_lock`.
+- Resolve the frozen GCTA and `pca_lock` axis cache built in Step 00d. No refit.
 
-## Inputs
-
-- Lab GCTA freeze artifacts under `results/cache/` (eigenvec/eigenval)
-- Panel dosage cache for site alignment
-- Root layout expected by `pca_lock`
-
-## Commands
-
-**No dedicated freeze-load CLI.** Loading is library-only:
+## Do
 
 ```bash
-# Used internally by grapeancestry project / analyze:
-#   src/grapeancestry/adna/pca_lock.py → load_gcta_freeze() / locked_pca_for_sample()
-#   src/grapeancestry/core/dosage.py → resolve_cache()
-
-# Customer projection CLI is Step 04b:
+src/grapeancestry/adna/pca_lock.py
+src/grapeancestry/core/dosage.py
 grapeancestry project --vcf results/Ages.vcf.gz --sample Ages
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| In-memory `GctaFreeze` | Axis files + eigenvalue fractions ready for projection |
-| Lock stamp | Confirms frozen axes (not per-customer refit) |
-
-## Plots
-
-None until 04b.
-
-## Notes
-
-- If the freeze is missing, projection cannot invent new panel axes — stage Step 00d first.
-- Axes stay frozen; only the query is least-squares projected.
+- In-memory `GctaFreeze`: axis files and eigenvalue fractions ready for projection.
+- Lock stamp: confirms frozen axes, not a per-customer refit.
+- No plot until 04b.
+- No dedicated freeze-load CLI. Loading is library-only: `load_gcta_freeze()` and `locked_pca_for_sample()` in `pca_lock.py`, and `resolve_cache()` in `dosage.py`. Used internally by `grapeancestry project` and `analyze`.
+- The customer projection CLI is Step 04b.
+- If the freeze is missing, projection cannot invent new panel axes. Stage Step 00d first.
+- Axes stay frozen. Only the query is least-squares projected.

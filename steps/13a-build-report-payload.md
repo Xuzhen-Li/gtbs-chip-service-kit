@@ -1,39 +1,27 @@
 # Step 13a — Build report payload
 
-## Goal
+## Input
 
-Gather all step artifacts into a structured bundle / interactive JSON payload (provenance + method coverage).
+- Per-sample results from Steps 02–12: QC, identity, PCA, ADMIXTURE, trees, f-stats, selection, GWAS and GS, and damage.
+- Configured root layout under `results/` and `data/`.
+- Gather those artifacts into a structured bundle and interactive JSON payload, with provenance and method coverage.
 
-## Inputs
-
-- Per-sample results from Steps 02–12 (QC, identity, PCA, ADMIXTURE, trees, f-stats, selection, GWAS/GS, damage)
-- Configured root layout under `results/` and `data/`
-
-## Commands
+## Do
 
 ```bash
-# Payload build is inside analyze / run (no standalone “bundle” CLI):
 grapeancestry analyze --sample Ages
 grapeancestry run --sample Ages --analyze
-
-# Libraries:
-#   src/grapeancestry/report/build_report.py  → build_bundle
-#   src/grapeancestry/report/interactive_data.py
-#   src/grapeancestry/cli.py → _post_analyze
+src/grapeancestry/report/build_report.py
+src/grapeancestry/report/interactive_data.py
+src/grapeancestry/cli.py
 ```
 
-## Outputs
+## Get
 
-| Artifact | Meaning |
-|----------|---------|
-| In-memory / sidecar payload | QC, identity, Q, PC, trees, coverage flags, provenance IDs |
-| Optional `*.report.data.json` | Downloads sidecar when written |
-
-## Plots
-
-None until HTML render (13b).
-
-## Notes
-
+- In-memory or sidecar payload: QC, identity, Q, PC, trees, coverage flags, and provenance IDs.
+- Optional `*.report.data.json`: downloads sidecar when written.
+- No plot until the HTML render (13b).
+- Payload build is inside `analyze` and `run`. There is no standalone bundle CLI.
+- `build_report.py` exposes `build_bundle`. `cli.py` runs `_post_analyze`.
 - Provenance must record `query_id`, `source_sample_id`, artifact paths, and method coverage.
 - Unavailable methods stay labeled unavailable.
