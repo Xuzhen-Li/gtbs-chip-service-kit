@@ -2,6 +2,8 @@
 
 The commands that turn chip data into a report are in this repo under [steps/](../../steps/), one file per step, from `00a` through `14b`. [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry) remains the grapevine 167K worked example.
 
+The command blocks in those files call scripts and data that are not in this clone, so this repo alone cannot run the report.
+
 For the grapevine 167K example, follow that index:
 
 1. Prepare the panel before any new sample: `00a` through `00e`. Skip `00f` and `00g` if you only want ancestry.

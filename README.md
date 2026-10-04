@@ -1,10 +1,10 @@
 # GBTS Chip Service Kit
 
-How to build your own analysis suite from chip data you already have. This repo is the suite: profiles, reports, and the service scaffold. It does not tell you how to design the chip.
+How to register a chip you already have, and where the analysis steps are written down. It does not tell you how to design the chip.
 
 Designing a chip (choose sites, check them against the annotation, freeze a panel) is [grapevine-chip](https://github.com/Xuzhen-Li/grapevine-chip). The grapevine 167K run of this suite is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry). Demo report: [ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html).
 
-**GBTS Chip Service Kit** is a reusable companion stack for standing up automated genotyping by target sequencing (GBTS) and capture-panel analysis services for any crop. It packages calling pipelines, report engines, and cloud interfaces as one deployable template so labs can ship a genotyping dashboard without rebuilding the stack. The grapevine **167K** panel ships only as an example profile — raw reads through interactive diagnostic reports — not as the only supported species.
+This repo is how you register a chip you already have: a profile, checked with `validate-profile`. The analysis steps are written down in [steps/](steps/), one file per step. It does not ship the scripts, genomes, or dose matrices.
 
 Repo slug: [`gtbs-chip-service-kit`](https://github.com/Xuzhen-Li/gtbs-chip-service-kit). Package import name: `gtbs_kit`.
 
@@ -25,11 +25,11 @@ Binaries, genomes, FASTQ, and dosage matrices are **not** shipped.
 
 ## Grapevine walkthrough
 
-The analysis commands are in this repo under [steps/](steps/), one file per step, from `00a` through `14b`. **[Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)** remains the grapevine 167K worked example (GUIDELINE, Ages demo HTML).
+The analysis write-up is in [steps/](steps/), one file per step, from `00a` through `14b`. **[Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)** is the grapevine 167K worked example that actually runs.
 
 ## How to operate
 
-One file per step: [docs/steps.md](docs/steps.md). Install, copy `templates/`, fill `profile.yaml`, then `gtbs-kit validate-profile`. The analysis commands are in this repo under [steps/](steps/), one file per step, from `00a` through `14b`. [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry) remains the grapevine 167K worked example.
+The six profile steps are [docs/steps.md](docs/steps.md). The analysis order is [steps/README.md](steps/README.md). The commands in [steps/](steps/) call scripts that are not in this clone.
 
 ## Quick start
 
