@@ -10,4 +10,4 @@ This repo is the profile and the check. It is not the caller or the report. One 
 6. [Stage data locally](steps/06-stage-local-data.md)
 7. [Run the suite](steps/07-run-the-suite.md)
 
-Step 7 is the grapevine walkthrough, already split into one file per command in [grapeancestry/steps](https://github.com/Xuzhen-Li/grapeancestry/tree/main/steps).
+Step 7 runs the analysis commands in this repo under [steps/](../steps/), one file per step, from `00a` through `14b`. [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry) remains the grapevine 167K worked example.

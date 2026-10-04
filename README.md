@@ -23,13 +23,13 @@ Repo slug: [`gtbs-chip-service-kit`](https://github.com/Xuzhen-Li/gtbs-chip-serv
 
 Binaries, genomes, FASTQ, and dosage matrices are **not** shipped.
 
-## Grapevine walkthrough (separate repo)
+## Grapevine walkthrough
 
-Example profile points at **[Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)** (GUIDELINE, Ages demo HTML, step docs). That walkthrough is not duplicated here.
+The analysis commands are in this repo under [steps/](steps/), one file per step, from `00a` through `14b`. **[Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)** remains the grapevine 167K worked example (GUIDELINE, Ages demo HTML).
 
 ## How to operate
 
-One file per step: [docs/steps.md](docs/steps.md). Install, copy `templates/`, fill `profile.yaml`, then `gtbs-kit validate-profile`. Calling and the HTML report are not commands in this repo. They are the step files in [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry/tree/main/steps).
+One file per step: [docs/steps.md](docs/steps.md). Install, copy `templates/`, fill `profile.yaml`, then `gtbs-kit validate-profile`. The analysis commands are in this repo under [steps/](steps/), one file per step, from `00a` through `14b`. [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry) remains the grapevine 167K worked example.
 
 ## Quick start
 

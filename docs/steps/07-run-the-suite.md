@@ -1,6 +1,6 @@
 # 7. Run the suite
 
-This repo stops at the profile. The commands that turn chip data into a report are one file per step in [grapeancestry/steps](https://github.com/Xuzhen-Li/grapeancestry/tree/main/steps).
+The commands that turn chip data into a report are in this repo under [steps/](../../steps/), one file per step, from `00a` through `14b`. [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry) remains the grapevine 167K worked example.
 
 For the grapevine 167K example, follow that index:
 
