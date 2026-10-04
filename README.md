@@ -27,6 +27,10 @@ Binaries, genomes, FASTQ, and dosage matrices are **not** shipped.
 
 Example profile points at **[Xuzhen-Li/grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)** (GUIDELINE, Ages demo HTML, step docs). That walkthrough is not duplicated here.
 
+## How to operate
+
+One file per step: [docs/steps.md](docs/steps.md). Install, copy `templates/`, fill `profile.yaml`, then `gtbs-kit validate-profile`. Calling and the HTML report are not commands in this repo. They are the step files in [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry/tree/main/steps).
+
 ## Quick start
 
 These commands match `pyproject.toml` (`gtbs-kit = gtbs_kit.cli:main`) and `src/gtbs_kit/cli.py` in the public clone: `validate-profile` loads a profile YAML, `list-examples` lists directories under `profiles/examples` that contain `profile.yaml`.
