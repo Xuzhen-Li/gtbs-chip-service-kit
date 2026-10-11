@@ -2,8 +2,6 @@
 
 Registers an existing genotyping chip as a profile and checks it with `validate-profile`. Chip design is in [grapevine-chip](https://github.com/Xuzhen-Li/grapevine-chip); the grapevine 167K run is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry). Demo report: [ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html).
 
-The analysis steps are written down in [steps/](steps/), one file per step.
-
 Repo slug: [`gtbs-chip-service-kit`](https://github.com/Xuzhen-Li/gtbs-chip-service-kit). Package import name: `gtbs_kit`.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
