@@ -1,5 +1,5 @@
 profile_id: grapevine_167k
-label: Grapevine 167K GBTS / liquid-capture panel (example only)
+label: Grapevine 167K genotyping by target sequencing / liquid-capture panel (example only)
 panel_n_sites: 167433
 coordinate_system: VS-1
 # Local-only in private deploys (not in this public clone):
