@@ -1,12 +1,12 @@
 # Repository layout (KEEP / CUT)
 
-Slug: **`gtbs-chip-service-kit`**. Public title: **GBTS Chip Service Kit**.
+Slug: **`gtbs-chip-service-kit`**. Public title: **Genotyping by Target Sequencing Chip Service Kit**.
 
 ## Split vs grapeancestry
 
 | Repo | Role |
 |------|------|
-| **gtbs-chip-service-kit** | Species-agnostic GBTS/capture **service template + profile contract** |
+| **gtbs-chip-service-kit** | Species-agnostic genotyping by target sequencing / capture **service template + profile contract** |
 | **grapeancestry** | Grapevine 167K **public walkthrough / GUIDELINE / demo HTML** |
 
 ## KEEP (public scaffold)

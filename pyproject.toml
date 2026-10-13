@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gtbs-chip-service-kit"
 version = "0.1.0"
-description = "Reusable GBTS / capture-panel companion service kit (thin public glue)"
+description = "Reusable genotyping-by-target-sequencing / capture-panel companion service kit (thin public glue)"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }

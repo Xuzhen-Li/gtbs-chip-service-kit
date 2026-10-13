@@ -1,5 +1,5 @@
 profile_id: your_chip_slug
-label: Your GBTS / capture panel
+label: Your genotyping by target sequencing / capture panel
 panel_n_sites: 0
 coordinate_system: your-ref
 # sites_bed: data/panel/sites.bed

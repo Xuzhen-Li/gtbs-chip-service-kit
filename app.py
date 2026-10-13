@@ -8,7 +8,7 @@ from gtbs_kit.load_profile import load_profile
 
 
 def main() -> None:
-    st.title("GBTS Chip Service Kit")
+    st.title("Genotyping by Target Sequencing Chip Service Kit")
     st.caption("Load a profile, then call your private CloudDoor implementation.")
     path = st.text_input("Profile YAML", "profiles/examples/grapevine_167k/profile.yaml")
     if st.button("Validate profile") and path:

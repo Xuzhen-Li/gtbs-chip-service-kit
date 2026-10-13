@@ -10,7 +10,7 @@ from gtbs_kit.load_profile import load_profile
 
 @click.group()
 def main() -> None:
-    """GBTS Chip Service Kit — profile utilities (thin public CLI)."""
+    """Genotyping by Target Sequencing Chip Service Kit — profile utilities (thin public CLI)."""
 
 
 @main.command("validate-profile")
