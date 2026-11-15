@@ -58,7 +58,9 @@ def test_every_example_profile_matches_schema():
 
 
 def test_profile_id_matches_folder_name():
-    for path in sorted((ROOT / "profiles/examples").glob("*/profile.yaml")):
+    profiles = sorted((ROOT / "profiles/examples").glob("*/profile.yaml"))
+    assert profiles, "no profiles/examples/*/profile.yaml found"
+    for path in profiles:
         data = yaml.safe_load(path.read_text())
         folder = path.parent.name
         assert data.get("profile_id") == folder, (
