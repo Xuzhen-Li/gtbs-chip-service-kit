@@ -9,8 +9,8 @@ the CLI command is `gtbs-kit`.
 This repository does not genotype samples. It provides the profile format,
 an example profile for the grapevine 167K panel, a template for a new
 chip, and a documented analysis order in [steps/](steps/). The scripts
-referenced by those steps are not included in this repository. For an
-end-to-end grapevine analysis, see
+referenced by those steps are not included in this repository. For a full
+grapevine analysis walkthrough, see
 [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry) (demo report:
 [ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html)).
 Details on how the grapevine sites were selected are in
