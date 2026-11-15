@@ -2,7 +2,7 @@
 
 # Analysis steps
 
-These steps need the VS-1 genome and the 2449-sample × 167K-site panel files, which you stage yourself (they are not in git). The package itself installs with `pip install -e .`, but it does not contain the scripts these steps call.
+These steps need the VS-1 genome and the 2449-sample × 167K-site panel files, which you stage yourself (they are not in git). The package itself installs in a venv with `pip install -e ".[dev]"` (see [docs/INSTALL.md](../docs/INSTALL.md)), but it does not contain the scripts these steps call.
 
 - Main path: `00a` to `13b`, ending at the sample-first V2 HTML report.
 - Optional: `14a` and `14b` (`chip-report`, cloud JSON). The v1 HTML does not need them.

@@ -2,15 +2,15 @@
 
 English | [中文](README.zh.md)
 
-Describes a genotyping chip (capture panel) in a small `profile.yaml` and
-checks that file. The Python package is `gtbs_kit`; the command is
+This kit describes a genotyping chip (capture panel) in a small
+`profile.yaml` and checks that file. The Python package is `gtbs_kit`; the command is
 `gtbs-kit`.
 
 This repository does not genotype samples. It holds the profile format,
 an example profile for the grapevine 167K panel, a template for a new
 chip, and a written analysis order in [steps/](steps/). The scripts those
-steps call are not in this repository. The grapevine run that does work end
-to end is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)
+steps call are not in this repository. For a grapevine analysis that runs
+end to end, see [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)
 (demo report:
 [ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html)).
 How the grapevine sites were chosen is in
@@ -62,10 +62,11 @@ python -m pytest -q tests
 ```
 
 `validate-profile` only checks that `profile_id` and `panel_n_sites` are
-present. The tests check every profile under `profiles/examples/` against
-the rules in `profiles/profile.schema.json` (for example,
-`panel_n_sites` must be a whole number of at least 1), so the copied
-template fails until you fill it in. Step-by-step notes:
+present. The tests check every profile under `profiles/examples/` for the
+required keys, top-level types and minimums in
+`profiles/profile.schema.json` (for example, `panel_n_sites` must be a
+whole number of at least 1), and that `profile_id` matches the folder
+name. So the copied template fails until you fill it in. Step-by-step notes:
 [docs/steps.md](docs/steps.md).
 
 Keep genomes, FASTQ, VCFs, and dosage matrices on your own machine. Point

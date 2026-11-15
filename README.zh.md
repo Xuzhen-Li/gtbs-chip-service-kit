@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-用一个小的 `profile.yaml` 描述一张基因分型芯片（液相捕获 panel），并检查这个文件。Python 包名是 `gtbs_kit`，命令是 `gtbs-kit`。
+用一个小的 `profile.yaml` 描述一张基因分型芯片（捕获 panel），并检查这个文件。Python 包名是 `gtbs_kit`，命令是 `gtbs-kit`。
 
 本仓库不做样本分型。它只有：配置文件格式、葡萄 167K panel 的示例配置、新芯片用的空白模板，以及 [steps/](steps/) 里写好的分析顺序。这些步骤调用的脚本不在本仓库。能从头跑通的葡萄示例在 [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry)（演示报告：[ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html)）。葡萄位点是怎么选出来的，见 [grapevine-chip](https://github.com/Xuzhen-Li/grapevine-chip)。
 
@@ -36,7 +36,7 @@ gtbs-kit validate-profile profiles/examples/my_chip/profile.yaml
 python -m pytest -q tests
 ```
 
-`validate-profile` 只检查 `profile_id` 和 `panel_n_sites` 是否存在。测试会按 `profiles/profile.schema.json` 的规则检查 `profiles/examples/` 下的每个配置（比如 `panel_n_sites` 必须是不小于 1 的整数），所以刚复制的模板在填好之前会测试失败。分步说明见 [docs/steps.md](docs/steps.md)。
+`validate-profile` 只检查 `profile_id` 和 `panel_n_sites` 是否存在。测试会按 `profiles/profile.schema.json` 检查 `profiles/examples/` 下每个配置的必填键、顶层类型和最小值（比如 `panel_n_sites` 必须是不小于 1 的整数），并检查 `profile_id` 与文件夹名一致，所以刚复制的模板在填好之前会测试失败。分步说明见 [docs/steps.md](docs/steps.md)。
 
 基因组、FASTQ、VCF 和剂量矩阵留在自己的机器上，用 `sites_bed`、`panel_info`、`dosage_cache` 指过去，不要提交到仓库。
 

@@ -53,7 +53,17 @@ def test_every_example_profile_matches_schema():
     assert profiles
     for path in profiles:
         data = yaml.safe_load(path.read_text())
-        assert _check_against_schema(data, schema) == [], path
+        problems = _check_against_schema(data, schema)
+        assert problems == [], f"{path}: {problems}"
+
+
+def test_profile_id_matches_folder_name():
+    for path in sorted((ROOT / "profiles/examples").glob("*/profile.yaml")):
+        data = yaml.safe_load(path.read_text())
+        folder = path.parent.name
+        assert data.get("profile_id") == folder, (
+            f"{path}: profile_id is {data.get('profile_id')!r}, expected the folder name {folder!r}"
+        )
 
 
 def test_blank_template_is_caught():

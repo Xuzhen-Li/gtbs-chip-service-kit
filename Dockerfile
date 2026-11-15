@@ -25,7 +25,8 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER app.py ./
 COPY --chown=$MAMBA_USER:$MAMBA_USER docs ./docs
 RUN micromamba install -y -n base -f environment-hpc.yml && micromamba clean -a -y
 ARG MAMBA_DOCKERFILE_ACTIVATE=1
-RUN pip install -e ".[web]"
+# streamlit comes from environment-hpc.yml; pyproject.toml has no "web" extra.
+RUN pip install -e .
 ENV PATH=/opt/conda/bin:/usr/local/bin:$PATH
 EXPOSE 8501
 # Frozen Q/P live in data/panel/admixture (volume). Large VS1/panel VCF: same volume.

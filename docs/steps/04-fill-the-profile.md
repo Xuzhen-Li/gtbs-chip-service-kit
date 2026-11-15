@@ -21,4 +21,4 @@ python -m pytest -q tests/test_profile_schema.py
 - `coordinate_system`: the reference those sites use.
 - Leave `sites_bed`, `panel_info`, and `dosage_cache` commented until those files exist on the machine that runs the suite.
 - Do not commit genomes, FASTQ, VCFs, or dosage matrices.
-- `tests/test_profile_schema.py` checks every `profiles/examples/*/profile.yaml` for the required keys and types in the schema. The copied template fails until `panel_n_sites` is at least 1.
+- `tests/test_profile_schema.py` checks every `profiles/examples/*/profile.yaml` for the required keys and types in the schema. It also checks that `profile_id` matches the folder name. The copied template fails until `panel_n_sites` is at least 1 and `profile_id` is the folder name.
