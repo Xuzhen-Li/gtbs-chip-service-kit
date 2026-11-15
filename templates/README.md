@@ -1,3 +1,3 @@
-# Empty profile template
+# Blank profile
 
-Copy to `profiles/<chip_slug>/` and fill `profile.yaml` + `CLAIMS.md`.
+Copy this folder to `profiles/examples/<chip_slug>/`, then fill in `profile.yaml` and `CLAIMS.md`. `gtbs-kit list-examples` and the tests only look under `profiles/examples/`.

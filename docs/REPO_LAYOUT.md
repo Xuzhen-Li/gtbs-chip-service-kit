@@ -1,41 +1,34 @@
-# Repository layout (KEEP / CUT)
+# What is in this repository
 
-Slug: **`gtbs-chip-service-kit`**. Public title: **Genotyping by Target Sequencing Chip Service Kit**.
+Repository: `gtbs-chip-service-kit`. Title: Genotyping by Target Sequencing Chip Service Kit.
 
-## Split vs grapeancestry
+## How it relates to grapeancestry
 
-| Repo | Role |
+| Repository | Holds |
 |------|------|
-| **gtbs-chip-service-kit** | Species-agnostic genotyping by target sequencing / capture **service template + profile contract** |
-| **grapeancestry** | Grapevine 167K **public walkthrough / GUIDELINE / demo HTML** |
+| gtbs-chip-service-kit | The profile format for any crop's capture panel, a template, and the checker |
+| grapeancestry | The grapevine 167K walkthrough, guideline, and demo HTML |
 
-## KEEP (public scaffold)
+## Kept here
 
 - `README.md`, `LICENSE`, `pyproject.toml`, `requirements.txt`
-- `app.py` (thin: load profile → private plugin)
+- `app.py`: loads a profile in a browser page; the analysis plugin it would hand off to is private
 - `Dockerfile`, `docker-compose.yml`
-- `config/` (defaults only)
-- `platform/` — **thin contract docs** (SPI lives in `gtbs_kit.spi`)
-- `src/gtbs_kit/` — **thin glue** (`load_profile`, CLI)
+- `config/`: default settings only
+- `platform/`: interface notes (the interfaces are in `gtbs_kit.spi`)
+- `src/gtbs_kit/`: `load_profile` and the CLI
 - `profiles/profile.schema.json`, `profiles/examples/grapevine_167k/`
-- `templates/`, `tests/` (schema/contract)
-- `docs/` (how to add a profile; no grapevine GUIDELINE paste)
-- Optional: `workflow/` skeleton, `scripts/README`
+- `templates/`, `tests/`
+- `docs/`: how to add a profile (the grapevine guideline is not copied here)
+- `workflow/` skeleton and `scripts/README.md`
 
-## CUT from public tree
+## Not kept here
 
-- Third-party binaries (`bin/admixture`, `bin/gcta64`, …)
-- Heavy `data/` / `results/` (genomes, FASTQ, dosage caches)
-- Thick `src/grapeancestry/` engines (use grapeancestry / private suite)
-- Full pipeline/report/cloud **implementations** inside `platform/`
+- Third-party binaries (`bin/admixture`, `bin/gcta64`, and so on)
+- Large `data/` and `results/` files (genomes, FASTQ, dosage caches)
+- The analysis engine (`src/grapeancestry/`); use grapeancestry or the private suite
+- Full pipeline, report, and cloud code under `platform/`
 
-## Thin vs thick
+## Test for a new crop
 
-| Layer | Public | Private / other repo |
-|-------|--------|----------------------|
-| `platform/` | Seams + docs | — |
-| `gtbs_kit.spi` | Protocols | — |
-| `src/gtbs_kit/` | load_profile, CLI | — |
-| Engines | — | Snakemake bodies, HTML builders, matrix I/O |
-
-**Acceptance:** read `platform/` + `profiles/examples/*`, write a third-crop `profile.yaml`, pass `tests/`—without cloning thick engines.
+Someone should be able to read `platform/` and `profiles/examples/*`, write a `profile.yaml` for a third crop, and pass `tests/` without the analysis engine.

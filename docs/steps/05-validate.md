@@ -3,7 +3,7 @@
 ## Input
 
 - `profiles/examples/your_chip/profile.yaml`.
-- `app.py` for the same check in a browser.
+- `app.py` for the same check in a browser. It needs `pip install streamlit` first; streamlit is not in `requirements.txt`.
 
 ## Do
 

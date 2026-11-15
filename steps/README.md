@@ -1,15 +1,13 @@
 > Scripts, data, config, and the sibling docs linked below (`REPO_MAP.md`, `docs/SCRIPTS.md`, `docs/PIPELINE.md`, `docs/GUIDELINE.md`) are not in this repo; stage them locally. The grapevine 167K worked example is [grapeancestry](https://github.com/Xuzhen-Li/grapeancestry). A public demo of that report is [ramos2019_np.batch.report.html](https://xuzhen-li.github.io/grapeancestry/demo/results/ramos2019_np.batch.report.html).
 
-# Analysis steps (fine-grained)
+# Analysis steps
 
-Needs the VS-1 genome and 2449 × 167K panel assets you stage yourself (not in git). Install: `pip install -e .`
+These steps need the VS-1 genome and the 2449-sample × 167K-site panel files, which you stage yourself (they are not in git). The package itself installs with `pip install -e .`, but it does not contain the scripts these steps call.
 
-**DIY no-kit path:** `00a`–`13b` (ends at sample-first V2 HTML).  
-**Optional Chip Companion:** `14a`–`14b` (`chip-report` / Cloud JSON — not required for v1 HTML).
+- Main path: `00a` to `13b`, ending at the sample-first V2 HTML report.
+- Optional: `14a` and `14b` (`chip-report`, cloud JSON). The v1 HTML does not need them.
 
-One markdown per sub-step. Names use **`00a`…`14b`** so order stays obvious.
-
-**Each file is Input, Do, and Get.** `00*` = data preparation (before any customer sample) · `01*`+ = per-sample analysis.
+One file per sub-step, each split into Input, Do, and Get. `00*` steps prepare the panel before any customer sample; `01*` onward run once per sample.
 
 | Step | Doc | Focus |
 |------|-----|-------|
@@ -46,13 +44,13 @@ One markdown per sub-step. Names use **`00a`…`14b`** so order stays obvious.
 | 12b | [12b-gwas-locuszoom.md](12b-gwas-locuszoom.md) | GWAS LocusZoom (trait leads) |
 | 13a | [13a-build-report-payload.md](13a-build-report-payload.md) | Build report payload |
 | 13b | [13b-render-sample-first-html.md](13b-render-sample-first-html.md) | Render sample-first V2 HTML |
-| 14a | [14a-cloud-analyze-vcf.md](14a-cloud-analyze-vcf.md) | **Optional** Cloud analyze query VCF |
-| 14b | [14b-emit-chip-json.md](14b-emit-chip-json.md) | **Optional** emit `chip.json` (not v1 product) |
+| 14a | [14a-cloud-analyze-vcf.md](14a-cloud-analyze-vcf.md) | Optional: cloud analysis of a query VCF |
+| 14b | [14b-emit-chip-json.md](14b-emit-chip-json.md) | Optional: write `chip.json` (not part of the v1 report) |
 
 ## Suggested reading order
 
-1. Data prep: `00a` → `00g` (skip `00f`/`00g` if ancestry-only)  
-2. Per sample (**DIY / v1 HTML**): `01a` → `13b` → `*.sample-first-v2.report.html` — **skip 14\*** for v1 HTML  
-3. **Optional** Cloud JSON only: `14a` → `14b` (Chip Companion; skip for Docker kit / DIY HTML)
+1. Panel preparation: `00a` to `00g`. Skip `00f` and `00g` if you only want ancestry.
+2. Each sample: `01a` to `13b`, which writes `*.sample-first-v2.report.html`. Skip `14a` and `14b` for this report.
+3. Cloud JSON only: `14a` to `14b`.
 
-**Other chips:** reuse these step IDs; replace artifacts behind `00a`–`00e` via [gtbs-chip-service-kit](https://github.com/Xuzhen-Li/gtbs-chip-service-kit) + `config/`.
+Other chips reuse the same step ids. Replace the files behind `00a` to `00e` and describe the chip in a profile (see the root README) plus `config/`.
