@@ -5,12 +5,12 @@
 - `profiles/examples/your_chip/profile.yaml`.
 - `load_profile` requires `profile_id` and `panel_n_sites`.
 - The schema also requires `label`, and `panel_n_sites` must be an integer of at least 1.
-- The CLI does not check the schema file.
+- The CLI does not read the schema file. The tests do.
 
 ## Do
 
 ```bash
-tests/test_profile_schema.py
+python -m pytest -q tests/test_profile_schema.py
 ```
 
 ## Get
@@ -21,4 +21,4 @@ tests/test_profile_schema.py
 - `coordinate_system`: the reference those sites use.
 - Leave `sites_bed`, `panel_info`, and `dosage_cache` commented until those files exist on the machine that runs the suite.
 - Do not commit genomes, FASTQ, VCFs, or dosage matrices.
-- `tests/test_profile_schema.py` checks the schema. The CLI does not.
+- `tests/test_profile_schema.py` checks every `profiles/examples/*/profile.yaml` for the required keys and types in the schema. It also checks that `profile_id` matches the folder name. The copied template fails until `panel_n_sites` is at least 1 and `profile_id` is the folder name.
