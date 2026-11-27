@@ -1,5 +1,5 @@
 # HPC full profile — Slurm / large RAM
-# Source: docs/BUILD.md §5 batch 0
+# Source: docs/BUILD.md §5
 
 profile: hpc_full
 threads: 16
